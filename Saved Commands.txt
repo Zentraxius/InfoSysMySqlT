@@ -1,0 +1,21 @@
+CREATE TABLE customers (
+       customer_id INT PRIMARY KEY AUTO_INCREMENT,
+       name VARCHAR(255) NOT NULL,
+       age TINYINT NOT NULL
+       );
+	   
+	   CREATE TABLE orders (
+  order_id INT PRIMARY KEY AUTO_INCREMENT,
+  fk_customer_id INT NOT NULL,
+  fk_product_id INT NOT NULL,
+  placed DATE NOT NULL,
+  FOREIGN KEY (fk_customer_id) REFERENCES customers(customer_id),
+   FOREIGN KEY (fk_product_id) REFERENCES products(product_id)
+  );
+  
+  CREATE TABLE products (
+  product_id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(60) NOT NULL,
+  price DECIMAL(6,2) NOT NULL,
+  stock INT NOT NULL
+  );
