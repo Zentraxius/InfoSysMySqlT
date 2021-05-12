@@ -328,3 +328,123 @@ mysql> describe products
 4 rows in set (0.00 sec)
 
 mysql>
+___________
+mysql> create table TestB (
+    -> test_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT
+    -> );
+ERROR 2013 (HY000): Lost connection to MySQL server during query
+No connection. Trying to reconnect...
+Connection id:    14
+Current database: testenv
+
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> create table TestB (
+    -> test_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT
+    -> );
+ERROR 1050 (42S01): Table 'testb' already exists
+mysql> show tables
+    -> ;
++-------------------+
+| Tables_in_testenv |
++-------------------+
+| customers         |
+| orders            |
+| products          |
+| testb             |
++-------------------+
+4 rows in set (0.01 sec)
+
+mysql> describe testdb;
+ERROR 1146 (42S02): Table 'testenv.testdb' doesn't exist
+mysql> describe testb;
++---------+------+------+-----+---------+----------------+
+| Field   | Type | Null | Key | Default | Extra          |
++---------+------+------+-----+---------+----------------+
+| test_id | int  | NO   | PRI | NULL    | auto_increment |
++---------+------+------+-----+---------+----------------+
+1 row in set (0.01 sec)
+
+mysql> alter testdb (
+    -> add date DATE NOT NULL INT
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'testdb (
+add date DATE NOT NULL INT
+)' at line 1
+mysql> alter table testb
+    -> add date NOT NULL INT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT NULL INT' at line 2
+mysql> alter table testb
+    -> ;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> alter table testb
+    -> add column_name data_type;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'data_type' at line 2
+mysql> REEE
+    -> ^C
+mysql>
+mysql>
+mysql> alter table testb (
+    -> add date DATE
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(
+add date DATE
+)' at line 1
+mysql> decribe testb
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'decribe testb' at line 1
+mysql> describe table testb;
++----+-------------+-------+------------+-------+---------------+---------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type  | possible_keys | key     | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+-------+---------------+---------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | testb | NULL       | index | NULL          | PRIMARY | 4       | NULL |    1 |   100.00 | Using index |
++----+-------------+-------+------------+-------+---------------+---------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> describe table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> describe table customers;
++----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------+
+| id | select_type | table     | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra |
++----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------+
+|  1 | SIMPLE      | customers | NULL       | ALL  | NULL          | NULL | NULL    | NULL |    1 |   100.00 | NULL  |
++----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------+
+1 row in set, 1 warning (0.01 sec)
+
+mysql> describe customers;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| customer_id | int          | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(255) | NO   |     | NULL    |                |
+| age         | tinyint      | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> describe testb;
++---------+------+------+-----+---------+----------------+
+| Field   | Type | Null | Key | Default | Extra          |
++---------+------+------+-----+---------+----------------+
+| test_id | int  | NO   | PRI | NULL    | auto_increment |
++---------+------+------+-----+---------+----------------+
+1 row in set (0.00 sec)
+
+mysql> drop testb;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'testb' at line 1
+mysql> alter table testb
+    -> add column date DATE;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe testb
+    -> ;
++---------+------+------+-----+---------+----------------+
+| Field   | Type | Null | Key | Default | Extra          |
++---------+------+------+-----+---------+----------------+
+| test_id | int  | NO   | PRI | NULL    | auto_increment |
+| date    | date | YES  |     | NULL    |                |
++---------+------+------+-----+---------+----------------+
+2 rows in set (0.02 sec)
+
+mysql>
