@@ -637,3 +637,25 @@ mysql> show tables;
 23 rows in set (0.01 sec)
 
 mysql>
+
+mysql> select * from actor WHERE first_name = 'John';
++----------+------------+-----------+---------------------+
+| actor_id | first_name | last_name | last_update         |
++----------+------------+-----------+---------------------+
+|      192 | JOHN       | SUVARI    | 2006-02-15 04:34:33 |
++----------+------------+-----------+---------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> select * from actor where last_name = 'Neeson';
++----------+------------+-----------+---------------------+
+| actor_id | first_name | last_name | last_update         |
++----------+------------+-----------+---------------------+
+|       61 | CHRISTIAN  | NEESON    | 2006-02-15 04:34:33 |
+|       62 | JAYNE      | NEESON    | 2006-02-15 04:34:33 |
++----------+------------+-----------+---------------------+
+2 rows in set (0.01 sec)
+
+mysql>
+
