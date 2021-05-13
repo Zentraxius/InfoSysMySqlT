@@ -1,3 +1,5 @@
+CREATE TABLE customers
+
 CREATE TABLE customers (
        customer_id INT PRIMARY KEY AUTO_INCREMENT,
        name VARCHAR(255) NOT NULL,
@@ -19,3 +21,47 @@ CREATE TABLE customers (
   price DECIMAL(6,2) NOT NULL,
   stock INT NOT NULL
   );
+  
+  #CREATE
+INSERT INTO my_table(name, rank, status) VALUES("John", 4, 'high');
+INSERT INTO my_table(name, rank, status) VALUES('Alan', 1, 'high');
+INSERT INTO my_table(name, rank, status) VALUES('Alex', 3, 'high');
+INSERT INTO my_table(name, rank, status) VALUES('Ryan', 5, 'high');
+
+ 
+
+#UPDATE
+UPDATE my_table
+SET name='Josh', rank=9
+WHERE name='Alan';
+
+ 
+
+#DELETE
+DELETE FROM my_table;
+DELETE FROM my_table WHERE name='Ryan';
+
+ 
+
+
+#READ
+SELECT * FROM my_table;
+SELECT * FROM my_table WHERE name='Alan';
+
+ 
+
+ INSERT INTO table(field, field1) VALUES (),(),();
+
+
+# USE THIS COMMAND TO DISABLE SAFE MODE 
+SET SQL_SAFE_UPDATES=0;
+
+mysql> insert into customers(name, age)
+    -> values ('Steve', 25);
+	
+	mysql> select * from customers;
++-------------+-------+-----+
+| customer_id | name  | age |
++-------------+-------+-----+
+|           1 | Steve |  25 |
++-------------+-------+-----+

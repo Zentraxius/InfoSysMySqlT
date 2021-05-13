@@ -1,0 +1,40 @@
+mysql> show tables;
++-------------------+
+| Tables_in_testenv |
++-------------------+
+| customers         |
+| orders            |
+| products          |
++-------------------+
+3 rows in set (0.00 sec)
+
+mysql> describe customers;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| customer_id | int          | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(255) | NO   |     | NULL    |                |
+| age         | tinyint      | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> describe orders;
++----------------+------+------+-----+---------+----------------+
+| Field          | Type | Null | Key | Default | Extra          |
++----------------+------+------+-----+---------+----------------+
+| order_id       | int  | NO   | PRI | NULL    | auto_increment |
+| fk_customer_id | int  | NO   | MUL | NULL    |                |
+| fk_product_id  | int  | NO   | MUL | NULL    |                |
+| placed         | date | NO   |     | NULL    |                |
++----------------+------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> describe products;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| product_id | int          | NO   | PRI | NULL    | auto_increment |
+| title      | varchar(60)  | NO   |     | NULL    |                |
+| price      | decimal(6,2) | NO   |     | NULL    |                |
+| stock      | int          | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
